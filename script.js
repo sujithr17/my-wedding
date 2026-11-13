@@ -1,0 +1,13 @@
+const weddingDate=new Date("2026-12-23T07:56:00+05:30").getTime();
+function tick(){let d=weddingDate-Date.now();if(d<0)d=0;const v={days:Math.floor(d/86400000),hours:Math.floor(d%86400000/3600000),minutes:Math.floor(d%3600000/60000),seconds:Math.floor(d%60000/1000)};for(const [k,n] of Object.entries(v))document.getElementById(k).textContent=String(n).padStart(2,"0")}
+tick();setInterval(tick,1000);
+document.getElementById("shareButton").addEventListener("click",()=>{const msg="We warmly invite you to celebrate the wedding of Swathy T & Sujith R on Wednesday, 23 December 2026.\\n\\nThalikettu: 7:56–8:20 AM — Sri Ramapuram Vishnu Temple, Vadakkanthara.\\nWedding function: 10:30–11:30 AM — Aswathy Kalyana Mandapam, Vadakkanthara.\\nReception: 4:30–8:00 PM — Gowri Sankar Kalyanamandapam, Vadavannur.\\n\\nJoin us: "+location.href;window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank","noopener")});
+document.getElementById("calendarButton").addEventListener("click",()=>{const events=[
+["20261223T022600Z","20261223T025000Z","Thalikettu — Swathy & Sujith","Sri Ramapuram Vishnu Temple, Vadakkanthara, Palakkad","https://maps.app.goo.gl/6zCLAsy8S4JncHFW9"],
+["20261223T050000Z","20261223T060000Z","Wedding function — Swathy & Sujith","Aswathy Kalyana Mandapam, Vadakkanthara, Palakkad","https://maps.app.goo.gl/wThRHEP8HTyiFEzS6"],
+["20261223T110000Z","20261223T143000Z","Wedding reception — Swathy & Sujith","Gowri Sankar Kalyanamandapam, Vadavannur, Palakkad","https://maps.app.goo.gl/HLoKAC3BK25oyogK7"]];
+const body=events.map((e,i)=>`BEGIN:VEVENT\\nUID:swathy-sujith-${i}@wedding\\nDTSTART:${e[0]}\\nDTEND:${e[1]}\\nSUMMARY:${e[2]}\\nLOCATION:${e[3]}\\nDESCRIPTION:Directions: ${e[4]}\\nEND:VEVENT`).join("\\n");
+const ics="BEGIN:VCALENDAR\\nVERSION:2.0\\nPRODID:-//Swathy and Sujith//Wedding//EN\\nCALSCALE:GREGORIAN\\n"+body+"\\nEND:VCALENDAR";
+const blob=new Blob([ics],{type:"text/calendar;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="swathy-sujith-wedding-events.ics";a.click();URL.revokeObjectURL(url)});
+const audio=document.getElementById("weddingAudio"),musicButton=document.getElementById("musicButton");
+musicButton.addEventListener("click",async()=>{if(audio.paused){try{await audio.play();document.getElementById("musicIcon").textContent="Ⅱ";document.getElementById("musicLabel").textContent="Pause music"}catch{document.getElementById("musicLabel").textContent="Add MP3 first"}}else{audio.pause();document.getElementById("musicIcon").textContent="♫";document.getElementById("musicLabel").textContent="Play music"}});
