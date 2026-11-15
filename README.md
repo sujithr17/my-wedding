@@ -1,1 +1,1 @@
-# Swathy & Sujith Wedding Website\n\nStatic HTML/CSS/JavaScript site. Keep the assets folder beside index.html. Push all files to the connected GitHub repository; Cloudflare Pages will deploy automatically. No background music is included.\n
+# Sujith R & Swathy T — Modern Editorial Wedding Reception Site\n\nStatic HTML/CSS/JavaScript site. Keep the assets folder beside index.html. Preview by opening index.html. Deploy by pushing all files to the groom-invitation branch connected to Cloudflare Pages. No background music is included.\n

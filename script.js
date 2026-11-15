@@ -1,12 +1,5 @@
-const weddingDate = new Date("2026-12-23T07:56:00+05:30").getTime();
-function tick() { let d = Math.max(0, weddingDate - Date.now()); const v = { days: Math.floor(d / 86400000), hours: Math.floor(d % 86400000 / 3600000), minutes: Math.floor(d % 3600000 / 60000), seconds: Math.floor(d % 60000 / 1000) }; for (const [k, n] of Object.entries(v)) document.getElementById(k).textContent = String(n).padStart(2, "0") }
-tick(); setInterval(tick, 1000);
-document.getElementById("shareButton").addEventListener("click", () => {
-    const msg = `We warmly invite you to celebrate the wedding of Swathy T & Sujith R on Wednesday, 23 December 2026.
-
-Wedding function: 10:30–11:30 AM — Aswathy Kalyana Mandapam, Vadakkanthara.
-Reception: 4:30–8:00 PM — Gowri Sankar Kalyanamandapam, Vadavannur.
-
-Join us: ${location.href}`; window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank", "noopener")
-});
- 
+const receptionDate=new Date("2026-12-23T16:30:00+05:30").getTime();
+function updateCountdown(){const r=Math.max(0,receptionDate-Date.now());const v={days:Math.floor(r/86400000),hours:Math.floor(r%86400000/3600000),minutes:Math.floor(r%3600000/60000),seconds:Math.floor(r%60000/1000)};for(const [id,n] of Object.entries(v))document.getElementById(id).textContent=String(n).padStart(2,"0")}
+updateCountdown();setInterval(updateCountdown,1000);
+document.getElementById("shareButton").addEventListener("click",()=>{const m=`Sujith R & Swathy T warmly invite you to their wedding reception.\n\nWednesday, 23 December 2026\n4:30 PM – 8:00 PM\nGowri Sankar Kalyanamandapam, Vadavannur, Palakkad.\n\nDirections: https://maps.app.goo.gl/HLoKAC3BK25oyogK7\n\nJoin us: ${location.href}`;window.open("https://wa.me/?text="+encodeURIComponent(m),"_blank","noopener")});
+document.getElementById("calendarButton").addEventListener("click",()=>{const lines=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Sujith R and Swathy T//Wedding Reception//EN","CALSCALE:GREGORIAN","BEGIN:VEVENT","UID:sujith-swathy-reception-20261223@wedding","DTSTART:20261223T110000Z","DTEND:20261223T143000Z","SUMMARY:Wedding Reception — Sujith R & Swathy T","LOCATION:Gowri Sankar Kalyanamandapam, Vadavannur, Palakkad, Kerala","DESCRIPTION:Directions: https://maps.app.goo.gl/HLoKAC3BK25oyogK7","END:VEVENT","END:VCALENDAR"].join("\r\n");const b=new Blob([lines],{type:"text/calendar;charset=utf-8"});const u=URL.createObjectURL(b);const a=document.createElement("a");a.href=u;a.download="sujith-r-swathy-t-reception.ics";a.click();URL.revokeObjectURL(u)});
