@@ -4,7 +4,6 @@ tick(); setInterval(tick, 1000);
 document.getElementById("shareButton").addEventListener("click", () => {
     const msg = `We warmly invite you to celebrate the wedding of Swathy T & Sujith R on Wednesday, 23 December 2026.
 
-Thalikettu — Sri Ramapuram Vishnu Temple, Vadakkanthara.
 Wedding function: 10:30–11:30 AM — Aswathy Kalyana Mandapam, Vadakkanthara.
 Reception: 4:30–8:00 PM — Gowri Sankar Kalyanamandapam, Vadavannur.
 
